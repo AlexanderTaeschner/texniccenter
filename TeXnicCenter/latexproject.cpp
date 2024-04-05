@@ -661,7 +661,7 @@ void CLaTeXProject::SerializeSession(CIniFile &ini, BOOL bWrite)
 
 					std::copy(iterator_type(iss),iterator_type(),std::back_inserter(points));
 					std::for_each(points.begin(),points.end(),
-						std::bind2nd(std::mem_fun1_ref(&FoldingPoint::SetContracted),true));
+						[](FoldingPoint point) { point.SetContracted(true); });
 
 					folding_points_.insert(std::make_pair(it->first,points));
 

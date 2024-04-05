@@ -192,7 +192,7 @@ BOOL CTextFileSaveDialog::OnInitDialog()
 	const std::vector<CString> encodings = GetEncodings();
 	
 	std::for_each(encodings.begin(),encodings.end(),
-		std::bind1st(std::mem_fun1(&CComboBox::AddString),&encoding_));
+		[this](CString str) { encoding_.AddString(str); });
 
 	//
 	UpdateData(FALSE);
