@@ -154,18 +154,15 @@ int CSplashWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CenterWindow();
 
 #if 0
-	if (RunTimeHelper::IsCommCtrl6())
-	{
-		const int offset = 20, cy = 20;
+	const int offset = 20, cy = 20;
 
-		BITMAP bm;
-		m_bitmap.GetBitmap(&bm);
+	BITMAP bm;
+	m_bitmap.GetBitmap(&bm);
 
-		const CRect rect(offset,bm.bmHeight - offset - cy,bm.bmWidth - offset,bm.bmHeight - offset);
-		progress_bar_.Create(WS_VISIBLE|WS_CHILD|PBS_MARQUEE,rect,this,123);
+	const CRect rect(offset,bm.bmHeight - offset - cy,bm.bmWidth - offset,bm.bmHeight - offset);
+	progress_bar_.Create(WS_VISIBLE|WS_CHILD|PBS_MARQUEE,rect,this,123);
 
-		progress_bar_.SendMessage(PBM_SETMARQUEE,TRUE,1);
-	}
+	progress_bar_.SendMessage(PBM_SETMARQUEE,TRUE,1);
 #endif // 0
 
 	const LOGFONT lf = GetDisplayFont();

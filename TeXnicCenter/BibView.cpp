@@ -88,7 +88,7 @@ BibView::BibView()
 : search_timer_enabled_(false)
 , dragged_item_(-1)
 , search_flags_(0)
-, can_group_(RunTimeHelper::IsCommCtrl6())
+, can_group_(true)
 , stop_search_(0)
 , search_semaphore_(1,1)
 , populate_was_search_(false)
@@ -151,8 +151,7 @@ int BibView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CMFCToolBarMenuButton m(~0U,menu.GetSubMenu(0)->GetSafeHmenu(),0);
 	toolbar_.ReplaceButton(ID_SEARCH_OPTIONS,m);
 
-	if (RunTimeHelper::IsCommCtrl6())
-		search_button_->GetEditBox()->SetCueBanner(CString(MAKEINTRESOURCE(IDS_SEARCH)));
+	search_button_->GetEditBox()->SetCueBanner(CString(MAKEINTRESOURCE(IDS_SEARCH)));
 
 	list_view_.CreateEx(WS_EX_CLIENTEDGE,WS_CHILD|WS_VISIBLE|WS_CLIPCHILDREN|WS_TABSTOP|LVS_REPORT|LVS_SHOWSELALWAYS,
 		CRect(0,0,0,0),this,ListID);

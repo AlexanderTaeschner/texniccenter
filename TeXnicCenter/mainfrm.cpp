@@ -2035,7 +2035,7 @@ void CMainFrame::OnApplicationLook(UINT id)
 void CMainFrame::OnUpdateApplicationLook(CCmdUI* pCmdUI)
 {
 	if (pCmdUI->m_nID == ID_VIEW_APP_LOOK_WIN_XP)
-		pCmdUI->Enable(RunTimeHelper::IsCommCtrl6());
+		pCmdUI->Enable(true);
 
 	pCmdUI->SetRadio(theApp.GetApplicationLook() == pCmdUI->m_nID);
 }

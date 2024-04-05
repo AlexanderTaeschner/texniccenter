@@ -2,16 +2,6 @@
 
 namespace RunTimeHelper
 {
-	/// Gets a value indicating whether commctrl version 6 is in use.
-	///
-	/// \return \c true if commctrl version 6 is used, \c false otherwise.
-	inline bool IsCommCtrl6()
-	{
-		DWORD dwMajor = 0, dwMinor = 0;
-		HRESULT hRet = ATL::AtlGetCommCtrlVersion(&dwMajor, &dwMinor);
-		return (SUCCEEDED(hRet) && (dwMajor >= 6));
-	}
-
 	/// Gets a value indicating whether the running operating system
 	/// is Windows Vista or higher.
 	/// 
