@@ -39,7 +39,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include <hash_set>
+#include <unordered_set>
 #include <stack>
 #include <cstddef>
 
@@ -56,21 +56,14 @@ class CLaTeXOutputFilter : public COutputFilter
 {
 	/// Represents a file name hash comparer.
 	class FileNameComparer {
-		typedef stdext::hash_compare<LPCTSTR> UsedComparer;
-		UsedComparer comparer_;
+		std::hash<LPCTSTR> hash_;
+		std::equal_to<LPCTSTR> comparer_;
 
 	public:
-		enum {
-			bucket_size = UsedComparer::bucket_size,
-#if _MSC_VER < 1600 
-			min_buckets = UsedComparer::min_buckets
-#endif
-		};
-
 		std::size_t operator()(CString text) const
 		{
 			text.MakeUpper();
-			return comparer_(text);
+			return hash_(text);
 		}
 
 		bool operator()(const CString& left, const CString& right) const
@@ -99,7 +92,7 @@ class CLaTeXOutputFilter : public COutputFilter
 		}
 	};
 
-	typedef stdext::hash_set<CString, FileNameComparer> FileNameContainer;
+	typedef std::unordered_set<CString, FileNameComparer, FileNameComparer> FileNameContainer;
 
 	/// Set of all valid file names that have been encountered while parsing.
 	FileNameContainer fileNames_;
