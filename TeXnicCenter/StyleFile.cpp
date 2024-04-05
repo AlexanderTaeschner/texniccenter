@@ -137,7 +137,7 @@ void CStyleFile::ProcessFile()
 	}
 	catch (CFileException& ex)
 	{
-		TRACE(_T("Error opening style file: %s\n"), ex);
+		TRACE(_T("Error opening style file: %s\n"), ex.m_strFileName);
 		UNUSED_ALWAYS(ex);
 
 		f.Close();
