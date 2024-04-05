@@ -1159,6 +1159,7 @@ const CString COutputWizard::FindMiKTeXInstallLocation()
 
 	// Known (future) MiKTeX versions - prefering newer ones
 	const CString versions[] = {
+		_T("MiKTeX"),
 		_T("MiKTeX 2.9"),
 		_T("MiKTeX 2.8"),
 		_T("MiKTeX 2.7")
